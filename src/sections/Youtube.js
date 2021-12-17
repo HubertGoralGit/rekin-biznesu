@@ -16,7 +16,23 @@ const EmbedWrapper = styled.div`
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    margin-top: 40px;
+    margin: 40px 0px;
+`
+
+const Button = styled.a`
+    border: 1px solid #e39439;
+    background-color: #e39439;
+    width: 200px;
+    height: 50px;
+    box-shadow: 0px 0px 4px 0px rgba(66, 68, 90, 1);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 `
 
 const Youtube = () => {
@@ -43,6 +59,7 @@ const Youtube = () => {
                     })}
                 </EmbedWrapper>
             )}
+            <Button href='https://www.youtube.com/c/RekinBiznesu' target='_blank'>Zobacz więcej</Button>
         </Wrapper>
     )
 }
