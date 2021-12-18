@@ -36,20 +36,19 @@ const Button = styled.a`
 `
 
 const Youtube = () => {
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         axios.get('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=3&playlistId=UUv0ltFBzWdhRZFj8IbUwXmA&key=AIzaSyBhDFTaNrwIojZwNlXvc1PRS3pglo9kCmM')
             .then(res => {
                 const yt = res.data.items;
-                console.log(res.data.items);
                 setData(yt);
-            }) ;
+            })
+            .catch(error => console.log(error));
     }, []);
 
     return (
         <Wrapper>
-            <h1>Youtube</h1>
             {data && (
                 <EmbedWrapper>
                     {data.map((item, id) => {
@@ -59,7 +58,7 @@ const Youtube = () => {
                     })}
                 </EmbedWrapper>
             )}
-            <Button href='https://www.youtube.com/c/RekinBiznesu' target='_blank'>Zobacz więcej</Button>
+            <Button href='https://www.youtube.com/c/RekinBiznesu' target='_blank'>Zobacz więcej filmów</Button>
         </Wrapper>
     )
 }

@@ -6,7 +6,7 @@ import heroImage from '../assets/images/heroImage.png';
 const StyledHeader = styled.div`
     width: 100%;
     height: 100vh;
-    background: linear-gradient(120deg, #ffffff, #ffffff 40%, #e39439 40%, #e39439);
+    position: relative;
 `
 
 const StyledHeroImage = styled.img`
