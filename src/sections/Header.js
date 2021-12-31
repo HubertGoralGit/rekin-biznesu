@@ -1,36 +1,101 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Navbar from '../components/Navbar/Navbar';
-import heroImage from '../assets/images/heroImage.png';
+import { media } from '../utils/index';
+import waveImage from '../assets/images/wave.png';
+import btcLogo from '../assets/icons/btc.png';
+
+const FadeIn = keyframes`
+    from {
+        opacity: 0;
+        top: 17%;
+    }
+    to {
+        opacity: 1;
+        top: 20%;
+    }
+`
 
 const StyledHeader = styled.div`
     width: 100%;
     height: 100vh;
     position: relative;
+
+    h1 {
+        text-align: center;
+        animation: ${FadeIn} 1s linear;
+        position: absolute;
+        width: 100%;
+        top: 20%;
+    }
 `
 
-const StyledHeroImage = styled.img`
-    width: 80%;
+const WaveWrapper = styled.div`
+    display: flex;
     position: absolute;
-    top: 20%;
+    z-index: -1;
+    bottom: 0;
+    width: 100%;
+ `
+
+const StyledWave = styled.img`
+    width: 100%;
+    &:last-of-type {
+        display: none;
+    }
+    ${media.tablet`
+        display: block;
+        width: calc(50% + 3px);
+        margin-left: -3px;
+
+        &:last-of-type {
+            display: block;
+            transform: rotateY(180deg);
+        }
+    `};
+    ${media.desktop`
+        display: block;
+        width: calc(50% + 3px);
+        margin-left: -3px;
+
+        &:last-of-type {
+            display: block;
+            transform: rotateY(180deg);
+        }
+    `};
 `
 
-const Text = styled.div`
+const Bitcoin = styled.img`
+    width: 75px;
+    height: 75px;
     position: absolute;
-    top: 30%;
-    right: 10%;
-    width: 400px;
+    top: 0;
+    left: 10%;
+    transform: rotate(347deg);  
+    ${media.tablet`
+        width: 70px;
+        height: 70px;
+        top: 35%;
+        left: calc(50% - 35px);
+    `}
+    ${media.desktop`
+        width: 100px;
+        height: 100px;
+        top: 35%;
+        left: calc(50% - 50px);
+    `};
 `
 
 const Header = () => {
     return (
         <StyledHeader>
-            <Navbar></Navbar>
-            <StyledHeroImage src={heroImage} alt='hero-image'/>
-            <Text>
-                <h1>O mnie</h1>
-                <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
-            </Text>
+            <Navbar />
+            <h1>Rekin Biznesu</h1>
+            <WaveWrapper>
+                <StyledWave src={waveImage}/>
+                <Bitcoin src={btcLogo}/>
+                <StyledWave src={waveImage}/>
+            </WaveWrapper>
         </StyledHeader>
     );
 }

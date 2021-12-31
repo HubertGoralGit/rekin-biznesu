@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { routes } from '../routes/index';
 import Home from '../views/Home';
 import MainTemplate from '../templates/MainTemplate'

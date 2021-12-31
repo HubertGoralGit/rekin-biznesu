@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import Coin from '../components/Coin/Coin';
+import CryptoTable from '../components/CryptoTable/CryptoTable';
+import { media } from '../utils/index';
 
-const Wrapper = styled.div`
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+const Wrapper = styled.section`
+    padding: 40px 0;
     min-height: 60vh;
+    width: 100%;
+    background-image: linear-gradient(to bottom, #ffffff, #e9edfa, #cbddf5, #a3d0ed, #74c4df, #74c4df, #74c4df, #74c4df, #a3d0ed, #cbddf5, #e9edfa, #ffffff);
+
+    .title {
+        text-align: center;
+    }
+
+    ${media.desktop`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    `}
 `
 
 const Crypto = () => {
@@ -25,21 +35,8 @@ const Crypto = () => {
 
     return (
         <Wrapper>
-            <h1>Crypto</h1>
-            {data.map(coin => {
-                return (
-                    <Coin 
-                        key={coin.id}
-                        name={coin.name}
-                        price={coin.current_price}
-                        symbol={coin.symbol}
-                        marketcap={coin.total_volume}
-                        volume={coin.market_cap}
-                        src={coin.image}
-                        priceChange={coin.price_change_percentage_24h}
-                    />
-                )
-            })}
+            <h1 className='title'>Aktualne kursy</h1>
+            <CryptoTable data={data}/>
         </Wrapper>
     );
 }
