@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import YoutubeEmbed from '../components/YoutubeEmbed/YoutubeEmbed';
+import { media } from '../utils/index';
 
 const Wrapper = styled.div`
     padding: 40px;
@@ -13,15 +14,20 @@ const Wrapper = styled.div`
 
 const EmbedWrapper = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     width: 100%;
     margin: 40px 0px;
+
+    ${media.desktop`
+        flex-direction: row;
+    `}
 `
 
 const Button = styled.a`
-    border: 1px solid #e39439;
-    background-color: #e39439;
+   border: 1px solid #74c4df;
+    background-color: #74c4df;
     width: 200px;
     height: 50px;
     box-shadow: 0px 0px 4px 0px rgba(66, 68, 90, 1);
@@ -49,6 +55,7 @@ const Youtube = () => {
 
     return (
         <Wrapper>
+            <h1>Mój kanał</h1>
             {data && (
                 <EmbedWrapper>
                     {data.map((item, id) => {
