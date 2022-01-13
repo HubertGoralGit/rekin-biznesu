@@ -24,7 +24,8 @@ const NavbarWrapper = styled.div`
     align-items: center;
     padding: 0 40px;
     animation: ${FadeIn} 1s linear;
-    background-image: linear-gradient(#74c4df, white);
+    //background-image: linear-gradient(#74c4df, white);
+    z-index: 1;
 `;
 
 const SocialWrapper = styled.div`

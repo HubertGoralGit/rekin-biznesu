@@ -3,7 +3,9 @@ import styled, { keyframes } from 'styled-components';
 import Navbar from '../components/Navbar/Navbar';
 import { media } from '../utils/index';
 import waveImage from '../assets/images/wave.png';
-import btcLogo from '../assets/icons/btc.png';
+import btcLogo from '../assets/icons/btc.jpg';
+import desktopWaveImage from '../assets/images/desktopWave.jpg';
+import titleImage from '../assets/images/title.jpg';
 
 const FadeIn = keyframes`
     from {
@@ -40,60 +42,60 @@ const WaveWrapper = styled.div`
 
 const StyledWave = styled.img`
     width: 100%;
+    z-index: 100;
     &:last-of-type {
         display: none;
     }
     ${media.tablet`
-        display: block;
-        width: calc(50% + 3px);
-        margin-left: -3px;
-
-        &:last-of-type {
-            display: block;
-            transform: rotateY(180deg);
-        }
+       display: none;
     `};
     ${media.desktop`
-        display: block;
-        width: calc(50% + 3px);
-        margin-left: -3px;
-
-        &:last-of-type {
-            display: block;
-            transform: rotateY(180deg);
-        }
+        display: none;
     `};
 `
 
+const StyledDesktopWave = styled.img`
+  display: none;
+  z-index: 100;
+  ${media.tablet`
+    display: block;
+    width: 100%;
+  `}
+  ${media.desktop`
+    display: block;
+    width: 100%;
+  `}
+  
+`
+
 const Bitcoin = styled.img`
-    width: 75px;
-    height: 75px;
+    width: 150px;
+    height: 150px;
     position: absolute;
-    top: 0;
+    top: -10%;
     left: 10%;
     transform: rotate(347deg);  
     ${media.tablet`
-        width: 70px;
-        height: 70px;
-        top: 35%;
-        left: calc(50% - 35px);
+        display: none;
     `}
     ${media.desktop`
-        width: 100px;
-        height: 100px;
-        top: 35%;
-        left: calc(50% - 50px);
+        display: none;
     `};
+`
+
+const Title = styled.img`
+  width: 50%;
 `
 
 const Header = () => {
     return (
         <StyledHeader>
             <Navbar />
-            <h1>Rekin Biznesu</h1>
+            <Title src={titleImage}/>
             <WaveWrapper>
                 <StyledWave src={waveImage}/>
                 <Bitcoin src={btcLogo}/>
+                <StyledDesktopWave src={desktopWaveImage}/>
                 <StyledWave src={waveImage}/>
             </WaveWrapper>
         </StyledHeader>
